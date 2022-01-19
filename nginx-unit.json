@@ -1,0 +1,32 @@
+{
+    "listeners": {
+        "*:80": {
+            "pass": "routes"
+        }
+    },
+
+    "routes": [
+        {
+            "action": {
+                "share": "/usr/local/share/rails-app/public$uri",
+                "fallback": {
+                    "pass": "applications/rails"
+                }
+            }
+        }
+    ],
+
+    "applications": {
+        "rails": {
+            "type": "ruby",
+            "script": "config.ru",
+            "working_directory": "/usr/local/share/rails-app/",
+            "environment": {
+                "BUNDLE_PATH": "/usr/local/share/rails-app/vendor/cache",
+                "HOME": "/usr/local/share/rails-app",
+                "RAILS_DATA_ROOT": "/var/local/rails-app/data",
+                "SECRET_KEY_BASE": "68b9e1c9313a63bb2876e6b49b1d3800362917a3e35b2b701b10b3a2ec28afb846a161355e2160e495982428ff586aaf806546c80a7b4ab7473444a43b7d8301"
+            }
+        }
+    }
+}

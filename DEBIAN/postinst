@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+applicationName="rails-app"
+applicationUser="rails"
+applicationRoot="/usr/local/share/$applicationName"
+applicationDataRoot="/var/local/$applicationName"
+
+/usr/sbin/adduser --system --group "$applicationUser"
+/usr/bin/chown -R "$applicationUser":"$applicationUser" "$applicationRoot"
+/usr/bin/chown -R "$applicationUser":"$applicationUser" "$applicationDataRoot"
